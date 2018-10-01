@@ -16,7 +16,7 @@ body {
 .wrapper {
     margin: 80px 20px 0px;
 }
-
+.container {margin: auto 10px;}
  /* align content center */
 .center-box {
     display: inline-flex;
@@ -25,6 +25,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 /* jumbotron content box */
 #jumbotron {
     margin-top: 20px;
@@ -35,10 +36,11 @@ body {
 /* header */
 .title {
     font-family: 'Anton', sans-serif;
-    font-size: 4em;
+    font-size: 6em;
     text-align: center;
     text-transform: uppercase;
-    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+    color: #007bffbd;
 }
   
 /* search form */
@@ -50,22 +52,25 @@ body {
     margin: 0 3px;
 }
 
-/* giphys */
-#giphys {
-    margin-top: 40px;
+/* giphys display */
+.genBox {
+    width: auto;
 }
-
-#giphys {
-    border: 2px solid #f76707;
-
-    background-color: #fff4e6;
+.genBox p {
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.5);
 }
-
+#giphys {
+    margin: 20px 0 50px;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 5px;
+}
 #giphys > div {
-    border: 2px solid #ffa94d;
     padding: 1em;
-    color: #d9480f;
+    width: auto;
 }
+#giphys img {max-width: 320px;}
 #giphys {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

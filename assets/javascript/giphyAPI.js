@@ -1,8 +1,4 @@
 // Global
-// var xhr = $.get("https://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=ozYjj30TGARmf8tnRHcv4f4bLKCjhosB&limit=5");
-// xhr.done(function(data) { console.log("success got data", data); });
-// Api Key: ozYjj30TGARmf8tnRHcv4f4bLKCjhosB
-
 var topics = ['hangry', 'excited', 'lazy', 'wild', 'outraged'];   //inital array of topics
 var k = $("<div>").addClass('hello').attr('data-name', 'world');
 console.log(k[0].dataset.name);
@@ -81,6 +77,7 @@ $(document).ready(function () {
         getGifs(searchResult);
         displayButtons();
     });
+    
     //pause gif
     // $('.mood').mouseover(function(){
     //     let state = $(this).attr("data-state");
