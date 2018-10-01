@@ -8,9 +8,9 @@ var topics = ['hangry', 'excited', 'lazy'];   //inital array of topics
 $(document).ready(function () {
 
     // Call Giphy API
-    function getGifs() {
-        
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchResult + "&api_key=ozYjj30TGARmf8tnRHcv4f4bLKCjhosB&limit=9";
+    function getGifs(searchResult) {
+
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchResult + "&api_key=ozYjj30TGARmf8tnRHcv4f4bLKCjhosB&limit=3";
 
         $.ajax({
             url: queryURL,
@@ -33,23 +33,22 @@ $(document).ready(function () {
                 resultDiv.append(newGif);               //add gif & rating to results div 
                 resultDiv.append(p);
 
-                $("#giphys").append(resultDiv);         //add results to giphys div 
+                $("#giphys").prepend(resultDiv);         //add results to giphys div 
             }
 
         });
     }
-
     // on click of the search button, call function that saves text input 
     $("#searchButton").on("click", function (event) {
         event.preventDefault();                                //prevents page from refreshing
 
         var searchResult = $("#searchInput").val().trim();    //grab the text entered into the form
         console.log("input: " + searchResult);
-        
+
         topics.push(searchResult);
         console.log(topics);
         getGifs(searchResult);
-        
+        displayButtons();
 
     });
 
@@ -69,7 +68,11 @@ $(document).ready(function () {
             $("#addTopics").append(b);          // Added the button to the addTopics div
         }
     }
-    $('.mood').on('click', getGifs);
+
+
+
+    $(document).on("click", ".mood", getGifs);
+    //console.log(searchResult);
 
 
     // Calling the displayButtons function to display the intial buttons

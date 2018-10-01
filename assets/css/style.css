@@ -1,3 +1,4 @@
+/* General Setup */
 html {
     min-height: 100%;
     -webkit-background-size: cover;
@@ -11,13 +12,17 @@ html {
 body {
     background-color: initial !important;
 }
-
+.genBox {
+    margin-bottom: 20px;
+}
+/* header */
 .title {
     font-family: 'Bungee Inline', cursive;
     font-size: 4em;
     text-align: center;
     text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
 }
+
 /* search form */
 #searchBox {
     display: block;
@@ -27,4 +32,8 @@ body {
 #searchForm {
     display: inline-block;
     width: 100%;
+}
+/* giphys */
+#giphys {
+    margin-top: 40px;
 }
