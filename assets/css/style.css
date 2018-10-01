@@ -1,0 +1,30 @@
+html {
+    min-height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: rgb(50,75,160);
+    background: linear-gradient(335deg, rgba(50,75,160,1) 0%, rgba(34,122,217,1) 26%, rgba(18,186,220,1) 100%);   
+    background-repeat: no-repeat;
+}
+body {
+    background-color: initial !important;
+}
+
+.title {
+    font-family: 'Bungee Inline', cursive;
+    font-size: 4em;
+    text-align: center;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+}
+/* search form */
+#searchBox {
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+}
+#searchForm {
+    display: inline-block;
+    width: 100%;
+}
