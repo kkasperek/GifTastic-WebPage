@@ -8,9 +8,9 @@ var topics = ['hangry', 'excited', 'lazy'];   //inital array of topics
 $(document).ready(function () {
 
     // Call Giphy API
-    function getGifs(searchResult) {
-
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchResult + "&api_key=ozYjj30TGARmf8tnRHcv4f4bLKCjhosB&limit=3";
+    function getGifs() {
+        var searchName = $(this).attr("data-name");
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchName + "&api_key=ozYjj30TGARmf8tnRHcv4f4bLKCjhosB&limit=3&offset=1";
 
         $.ajax({
             url: queryURL,
@@ -68,8 +68,6 @@ $(document).ready(function () {
             $("#addTopics").append(b);          // Added the button to the addTopics div
         }
     }
-
-
 
     $(document).on("click", ".mood", getGifs);
     //console.log(searchResult);
