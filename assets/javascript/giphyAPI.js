@@ -3,14 +3,25 @@
 // xhr.done(function(data) { console.log("success got data", data); });
 // Api Key: ozYjj30TGARmf8tnRHcv4f4bLKCjhosB
 
-var topics = ['hangry', 'excited', 'lazy'];   //inital array of topics
+var topics = ['hangry', 'excited', 'lazy', 'wild', 'outraged'];   //inital array of topics
+var k = $("<div>").addClass('hello').attr('data-name', 'world');
+console.log(k[0].dataset.name);
+
+// add data-name attribute to search results
+//var searchResult;
 
 $(document).ready(function () {
 
     // Call Giphy API
     function getGifs() {
+        // set the search term to the value input by the user
         var searchName = $(this).attr("data-name");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchName + "&api_key=ozYjj30TGARmf8tnRHcv4f4bLKCjhosB&limit=3&offset=1";
+        if (searchName === undefined){
+            searchName = searchResult;
+        }
+        
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchName + "&api_key=ozYjj30TGARmf8tnRHcv4f4bLKCjhosB&limit=10&offset=0";
+        console.log(searchName);
 
         $.ajax({
             url: queryURL,
@@ -38,20 +49,6 @@ $(document).ready(function () {
 
         });
     }
-    // on click of the search button, call function that saves text input 
-    $("#searchButton").on("click", function (event) {
-        event.preventDefault();                                //prevents page from refreshing
-
-        var searchResult = $("#searchInput").val().trim();    //grab the text entered into the form
-        console.log("input: " + searchResult);
-
-        topics.push(searchResult);
-        console.log(topics);
-        getGifs(searchResult);
-        displayButtons();
-
-    });
-
 
     // Display gif data 
     function displayButtons() {
@@ -69,9 +66,41 @@ $(document).ready(function () {
         }
     }
 
-    $(document).on("click", ".mood", getGifs);
-    //console.log(searchResult);
 
+    // on click of the search button, call function that saves text input 
+    $("#searchButton").on("click", function (event) {
+        event.preventDefault();                                //prevents page from refreshing
+
+        searchResult = $("#searchInput").val().trim();    //grab the text entered into the form
+        console.log("input: " + searchResult);
+
+        topics.push(searchResult);
+        console.log(topics);
+
+
+        getGifs(searchResult);
+        displayButtons();
+    });
+    //pause gif
+    // $('.mood').mouseover(function(){
+    //     let state = $(this).attr("data-state");
+    //     if (state === 'still'){
+    //         const url = $(this).attr("data-animate");
+    //         $(this).attr("src", url);
+    //         $(this).attr("data-state", 'animate');
+    //         console.log(state);
+       
+    //       } 
+    //       else if (state === 'animate') {
+    //         const url = $(this).attr("data-still");
+    //         $(this).attr("src", url);
+    //         $(this).attr("data-state", 'still');
+    //         console.log(state);
+    //       }
+    // });
+
+
+    $(document).on("click", ".mood", getGifs);
 
     // Calling the displayButtons function to display the intial buttons
     displayButtons();

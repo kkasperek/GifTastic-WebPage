@@ -7,7 +7,7 @@
     <title>GifTastic Web App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Montserrat" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
@@ -17,7 +17,7 @@
 <body>
     <div class="container">
         <div class="wrapper">
-            <div class="jumbotron">
+            <div id="jumbotron" class="jumbotron">
 
                 <!-- header -->
                 <div id="header" class="row ">
@@ -29,19 +29,19 @@
                 <!-- search form -->
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="searchBox">
+                        <div id="searchBox" class="center-box">
                             <form id="searchForm" class="form-inline">
-                                <input id="searchInput" type="text" class="form-control" placeholder="How you feelin'....?">
-                                <button id="searchButton" type="submit" class="btn btn-primary">Find</button>
+                                <input id="searchInput" type="text" class="form-control search" placeholder="How you feelin'....?" data-name="">
+                                <button id="searchButton" type="submit" class="btn btn-secondary search">Find</button>
                             </form>
                         </div>
                     </div>
                 </div>
 
                 <!-- searches buttons added here -->
-                <div class="row">
+                <div id="searchRow" class="row">
                     <div class="col-md-12">
-                        <div id="addTopics"></div>
+                        <div id="addTopics" class="center-box"></div>
                     </div>
                 </div>
 
