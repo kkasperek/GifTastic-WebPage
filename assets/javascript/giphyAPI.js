@@ -1,10 +1,7 @@
 // Global
 var topics = ['hangry', 'excited', 'lazy', 'wild', 'outraged'];   //inital array of topics
-var k = $("<div>").addClass('hello').attr('data-name', 'world');
-console.log(k[0].dataset.name);
-
-// add data-name attribute to search results
-//var searchResult;
+// var k = $("<div>").addClass('hello').attr('data-name', 'world');
+// console.log(k[0].dataset.name);
 
 $(document).ready(function () {
 
@@ -12,10 +9,10 @@ $(document).ready(function () {
     function getGifs() {
         // set the search term to the value input by the user
         var searchName = $(this).attr("data-name");
-        if (searchName === undefined){
+        if (searchName === undefined) {
             searchName = searchResult;
         }
-        
+
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchName + "&api_key=ozYjj30TGARmf8tnRHcv4f4bLKCjhosB&limit=10&offset=0";
         console.log(searchName);
 
@@ -31,20 +28,44 @@ $(document).ready(function () {
 
                 var resultDiv = $("<div>");                                //new div to hold results
                 var p = $("<p>").text("Rating: " + results[i].rating);     //new <p> to hold rating text
+                var newGif = $("<img>").attr('data-state', 'animate');       //create new gif img tag to hold url with datastate still
 
-                var newGif = $("<img>");                                   //create new gif img tag to hold url
-                var gifUrl = results[i].images.fixed_height.url;
-                newGif.attr("src", gifUrl);
+                let gifUrl = results[i].images.original.url;            //loop through results and grab url
+                newGif.attr("src", gifUrl);                                //save as newGif src attr
+                newGif.addClass("gif");
+
+                let stillURL = results[i].images.fixed_width_still.url;    //add still url to img attribute
+                newGif.attr("data-animate", gifUrl);
+                newGif.attr("data-still", stillURL);
+                // let animateURL = results[i].images.fixed_width.url;    //add animate url to img attribute
+                // newGif.attr("data-animate", animateURL);
+                // newGif.attr("data-still", gifUrl);
+
                 $("#giphys").append(newGif);
-
                 resultDiv.append(newGif);               //add gif & rating to results div 
                 resultDiv.append(p);
 
                 $("#giphys").prepend(resultDiv);         //add results to giphys div 
             }
-
         });
     }
+
+    // Animate gif on click function
+    $(".gif").on("click", function () {
+        let state = $(this).attr("data-state");
+        if (state === 'still') {
+            const url = $(this).attr("data-animate");
+            $(this).attr("src", url);
+            $(this).attr("data-state", 'animate');
+            console.log(state);
+        }
+        else if (state === 'animate') {
+            const url = $(this).attr("data-still");
+            $(this).attr("src", url);
+            $(this).attr("data-state", 'still');
+            console.log(state);
+        }
+    });
 
     // Display gif data 
     function displayButtons() {
@@ -61,8 +82,6 @@ $(document).ready(function () {
             $("#addTopics").append(b);          // Added the button to the addTopics div
         }
     }
-
-
     // on click of the search button, call function that saves text input 
     $("#searchButton").on("click", function (event) {
         event.preventDefault();                                //prevents page from refreshing
@@ -77,25 +96,6 @@ $(document).ready(function () {
         getGifs(searchResult);
         displayButtons();
     });
-    
-    //pause gif
-    // $('.mood').mouseover(function(){
-    //     let state = $(this).attr("data-state");
-    //     if (state === 'still'){
-    //         const url = $(this).attr("data-animate");
-    //         $(this).attr("src", url);
-    //         $(this).attr("data-state", 'animate');
-    //         console.log(state);
-       
-    //       } 
-    //       else if (state === 'animate') {
-    //         const url = $(this).attr("data-still");
-    //         $(this).attr("src", url);
-    //         $(this).attr("data-state", 'still');
-    //         console.log(state);
-    //       }
-    // });
-
 
     $(document).on("click", ".mood", getGifs);
 
