@@ -1,5 +1,6 @@
 # GifTastic-WebPage
 Description: Dynamic webpage using the Giphy API.
+https://kkasperek.github.io/GifTastic-WebPage/
 
 # Instructions:
 * When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
